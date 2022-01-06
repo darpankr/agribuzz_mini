@@ -10,10 +10,87 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+
+
+    <nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a href="#" class="navbar-brand">
+      <!-- Logo Image -->
+      <img src="https://bootstrapious.com/i/snippets/sn-nav-logo/logo.png" width="45" alt="" class="d-inline-block align-middle mr-2">
+      <!-- Logo Text -->
+      <span class="text-uppercase font-weight-bold">Agribuzz</span>
+    </a>
+
+    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a href="{% url 'Home' %}" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="{% url 'Farmerkit' %}" class="nav-link">Farmer Kit</a></li>
+        <li class="nav-item"><a href="{% url 'Farmermarket' %}" class="nav-link">Farmer Market</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Hire</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Account</a></li>
+      </ul>
+    </div>
+
+    <!-- {% if request.user.is_authenticated %} -->
+      <span class="hello-msg">Hi ADMIN</span>
+      <br>
+      <!-- <span><a href = "{% url 'Logout' %}">Logout</a></span> -->
+      <!-- {% else %} -->
+      <span><a href = "{% url 'Signin' %}">Login</a></span>
+      <!-- {% endif %} -->
+  </div>
+</nav>
+
+
+    <style type="text/css">
+
+      body,
+html,
+main
+{
+  height: 100%;
+  margin: auto 0;
+  font-family: 'Raleway','Microsoft JhengHei';
+}
+
+
+
+.fixed-bg {
+  min-height: 100%;
+  background-size: cover;
+  -webkit-background-size: cover !important; 
+  -moz-background-size: cover !important; 
+  -o-background-size: cover; 
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 20px;
+  line-height: 1.5;    
+}
+
+      .bg-2 {
+  background-image: url(https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1920&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=c0d43804e2c7c93143fe8ff65398c8e9);
+}
+
+
+    </style>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-    <h1>Hi i am anjali</h1>
+    <div class="fixed-bg bg-2">
+    <!-- <h1>The capital is Tórshavn.</h1> -->
+      <div class="container">
+      {% block content %}
+      {% endblock %}
+
+      </div>
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -26,4 +103,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
   </body>
+  {% include 'footer.html' %}
 </html>
