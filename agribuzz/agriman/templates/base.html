@@ -1,4 +1,4 @@
-
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,19 +28,22 @@
         <li class="nav-item active"><a href="{% url 'Home' %}" class="nav-link">Home</a></li>
         <li class="nav-item"><a href="{% url 'Farmerkit' %}" class="nav-link">Farmer Kit</a></li>
         <li class="nav-item"><a href="{% url 'Farmermarket' %}" class="nav-link">Farmer Market</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Hire</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Account</a></li>
+        <li class="nav-item"><a href="{% url 'Hire' %}" class="nav-link">Hire</a></li>
+        <li class="nav-item"><a href="{% url 'Account' %}" class="nav-link">Account</a></li>
+        {% if request.user.groups.all.0.name == 'farmer' %}
+        <li class="nav-item"><a href="{% url 'Formmarket' user.id %}" class="nav-link">Add market product</a></li>
+        <li class="nav-item"><a href="{% url 'Formkit' %}" class="nav-link">Add kit Product</a></li>
+        {% endif %}
       </ul>
     </div>
 
-    <!-- {% if request.user.is_authenticated %} -->
-      <span class="hello-msg">Hi ADMIN</span>
-      <br>
-      <!-- <span><a href = "{% url 'Logout' %}">Logout</a></span> -->
-      <!-- {% else %} -->
+    {% if request.user.is_authenticated %}
+      <span class="hello-msg">Hi {{request.user}}</span>
+      <p></p>
+      <span><a href = "{% url 'Logout' %}">Logout</a></span>
+      {% else %}
       <span><a href = "{% url 'Signin' %}">Login</a></span>
-      <!-- {% endif %} -->
+      {% endif %}
   </div>
 </nav>
 
